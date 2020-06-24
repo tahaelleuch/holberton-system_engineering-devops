@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#Bash script that displays files name
+
+for i in *
+do
+    echo "$i" | cut -f2 -d '-'
+done
