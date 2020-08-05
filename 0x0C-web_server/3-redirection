@@ -4,6 +4,7 @@
 sudo apt-get update
 sudo apt-get upgrate
 sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
 sudo printf %s "server {
     listen 80;
