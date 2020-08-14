@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#Setup a server to be a Load balancer
+#Using HAProxy with roundrobin algorithm
+
+sudo apt-get -y update
+sudo apt-get -y install haproxy=1.6.\*
+
+sudo sed -i "\$a\
+listen backend *:80\n\
+\tmode http\n\tbalance roundrobin\n\
+\tserver 123-web-01 66.70.187.105:80 check\n\
+\tserver 123-web-02 142.44.164.125:80 check\n" /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
