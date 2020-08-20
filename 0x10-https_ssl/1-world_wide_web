@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# get infos about a dns
+if [ "$2" ]
+then
+	Subs="$2"
+else
+	Subs="www lb-01 web-01 web-02"
+fi
+for val in $Subs
+do
+	a=$(dig "$val.$1" | grep -A1 'ANSWER SECTION:' | awk -F ":" '{print $NF}' | awk -F " " '{print $4}' | tail -c +2)
+	b=$(dig "$val.$1" | grep -A1 'ANSWER SECTION:' | awk -F ":" '{print $NF}' | awk -F " " '{print $NF}' | tail -c +2)
+	echo The subdomain "$val" is a "$a" record and points to "$b"
+done
