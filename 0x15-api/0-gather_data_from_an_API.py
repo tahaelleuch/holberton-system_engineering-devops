@@ -22,4 +22,4 @@ if __name__ == '__main__':
           .format(len(todo_list_done), number_of_task))
 
     for task in todo_list_done:
-        print("\t{}".format(task["title"]))
+        print("\t {}".format(task["title"]))
