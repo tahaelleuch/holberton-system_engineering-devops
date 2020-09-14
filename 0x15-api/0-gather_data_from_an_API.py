@@ -18,7 +18,7 @@ if __name__ == '__main__':
         "https://jsonplaceholder.typicode.com/todos?userId=" +
         user_id).json())
 
-    print(user_name + " is done with tasks({}/{}):"
+    print("Employee " + user_name + " is done with tasks({}/{}):"
           .format(len(todo_list_done), number_of_task))
 
     for task in todo_list_done:
