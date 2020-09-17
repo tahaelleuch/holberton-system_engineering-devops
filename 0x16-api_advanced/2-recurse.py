@@ -11,7 +11,7 @@ def recurse(subreddit, hot_list=[], after=""):
     url = link + "?after=" + after
     req = requests.get(url, headers={'User-Agent': ua},
                        allow_redirects=False)
-    if (req.status_code == 302 or req.status_code == 301):
+    if (req.status_code != 200):
         return None
     about = req.json()
     if about["data"]["children"] == 0:
