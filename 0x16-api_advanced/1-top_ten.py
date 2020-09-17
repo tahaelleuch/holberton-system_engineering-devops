@@ -17,4 +17,4 @@ def top_ten(subreddit):
             data2 = child["data"]
             print(data2["title"])
     except KeyError:
-        return None
+        print("None")
