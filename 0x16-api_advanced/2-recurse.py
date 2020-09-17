@@ -12,16 +12,18 @@ def recurse(subreddit, hot_list=[], after=""):
         url = link + "?after=" + after
     else:
         url = link
-    about = requests.get(url, headers={'User-Agent': ua}).json()
-    data = about["data"]
+    req = requests.get(url, headers={'User-Agent': ua})
+    about = req.json()
     try:
         data = about["data"]
         childrens = data["children"]
+        if len(childrens) == 0:
+            return None
         for child in childrens:
             data2 = child["data"]
             hot_list.append(data2["title"])
-    except IndexError:
-        pass
+    except KeyError:
+        print("None")
     after = about["data"]["after"]
     if after:
         recurse(subreddit, hot_list, after)
