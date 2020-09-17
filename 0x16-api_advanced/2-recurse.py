@@ -14,11 +14,9 @@ def recurse(subreddit, hot_list=[], after=""):
     if (req.status_code == 302 or req.status_code == 301):
         return None
     about = req.json()
-    data = about["data"]
-    childrens = data["children"]
-    if len(childrens) == 0:
+    if about["data"]["children"] == 0:
         return None
-    for child in childrens:
+    for child in about["data"]["children"]:
         data2 = child["data"]
         hot_list.append(data2["title"])
     after = about["data"]["after"]
