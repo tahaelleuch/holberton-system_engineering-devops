@@ -22,7 +22,6 @@ def recurse(subreddit, hot_list=[], after=""):
     except IndexError:
         pass
     after = about["data"]["after"]
-    print (after)
     if after:
         recurse(subreddit, hot_list, after)
     return hot_list
