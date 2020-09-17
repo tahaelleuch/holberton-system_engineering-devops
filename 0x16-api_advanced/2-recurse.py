@@ -3,6 +3,7 @@
 
 import requests
 
+
 def recurse(subreddit, hot_list=[], after=""):
     """get number of hot with recursion"""
     ua = 'Mozilla/5.0 (X11; Ubuntu; Linux i686) Gecko/20100101 Firefox/15'
