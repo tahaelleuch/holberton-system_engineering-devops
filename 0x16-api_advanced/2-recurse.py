@@ -12,7 +12,10 @@ def recurse(subreddit, hot_list=[], after=""):
         url = link + "?after=" + after
     else:
         url = link
-    req = requests.get(url, headers={'User-Agent': ua})
+    req = requests.get(url, headers={'User-Agent': ua},
+                       allow_redirects=False)
+    if (req.status_code == 302 or req.status_code == 301):
+        return None
     about = req.json()
     try:
         data = about["data"]
